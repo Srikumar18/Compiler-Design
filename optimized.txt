@@ -1,0 +1,22 @@
+n = 5
+i = 0
+t0 = 80
+total = 80
+i = 0
+L0:
+t1 = i + 1
+ifFalse i < n goto L1
+t2 = i + i
+rate = t2
+t3 = total + t2
+total = t3
+i = t1
+goto L0
+L1:
+L2:
+t4 = n + 2
+ifFalse i < t4 goto L3
+t5 = i + 1
+i = t5
+goto L2
+L3:

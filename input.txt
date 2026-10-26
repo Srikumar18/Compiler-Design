@@ -1,0 +1,16 @@
+int i, n;
+float rate;
+double total;
+
+n = 5;
+i = 0;
+total = 16 * 5;
+
+for (i = 0; i < n; i = i + 1) {
+    rate = i * 2;
+    total = total + rate;
+}
+
+while (i < n + 2) {
+    i = i + 1;
+}

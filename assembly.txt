@@ -1,0 +1,34 @@
+    MOV n, 5
+    MOV i, 0
+    MOV t0, 80
+    MOV total, 80
+    MOV i, 0
+L0:
+    LOAD R0, i
+    ADD R0, 1
+    STORE t1, R0
+    CMP i, n
+    JGE L1
+    LOAD R0, i
+    ADD R0, i
+    STORE t2, R0
+    MOV rate, t2
+    LOAD R0, total
+    ADD R0, t2
+    STORE t3, R0
+    MOV total, t3
+    MOV i, t1
+    JMP L0
+L1:
+L2:
+    LOAD R0, n
+    ADD R0, 2
+    STORE t4, R0
+    CMP i, t4
+    JGE L3
+    LOAD R0, i
+    ADD R0, 1
+    STORE t5, R0
+    MOV i, t5
+    JMP L2
+L3:

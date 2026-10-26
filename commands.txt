@@ -1,0 +1,29 @@
+# Compile lexer
+flex -o lexer.lex.c lexer.l
+gcc lexer.lex.c -o lexer
+
+# Compile syntax checker
+bison -d -o syntax.tab.c syntax.y
+flex -o syntax.lex.c compiler.l
+gcc syntax.tab.c syntax.lex.c -o syntax
+
+# Compile TAC generator
+bison -d -o tac.tab.c icg.y
+flex -o tac.lex.c compiler.l
+gcc -DTAC tac.tab.c tac.lex.c -o tac
+
+# Compile optimizer and backend
+gcc optimizer.c -o optimizer
+gcc backend.c -o backend
+
+# Run every section using input.txt
+./lexer < input.txt
+./syntax < input.txt
+./tac < input.txt
+./tac < input.txt | ./optimizer
+./tac < input.txt | ./optimizer | ./backend
+
+# Save intermediate outputs
+./tac < input.txt > output.txt
+./optimizer < output.txt > optimized.txt
+./backend < optimized.txt > assembly.txt
